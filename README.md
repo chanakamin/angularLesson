@@ -1,5 +1,25 @@
 # Angular Lesson - 14th grade 5782
 
+## Git important links
+[git installation on windows](https://git-scm.com/download/win)
+After install is complete, open git bash and run these commands:
+
+`git config --global user.name "your_name"`  
+`git config --global user.email "your_email"`  
+
+Create a github account!  
+
+[Generating ssh key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)  
+[Add ssh key to your github](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)  
+
+Then you can create a new repository and start pushing changes. 
+### important commands:  
+`git init`  - start work with git repository  
+`git status` - see current status (if there are files with changes)  
+`git add` - add file to stage - file will be saved in next commit   
+`git commit -m "some description" ` - save last change  
+`git push origin master` - push your changes to git.  
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
 
 ## Development server
