@@ -1,1 +1,4 @@
-<p>cart works!</p>
+<h2>Current Cart</h2>
+<ul>
+    <li *ngFor="let c of cart"> {{ c.product.name }} | {{ c.quantity }} <button (click)="subQuantityOfProduct(c)">-</button></li>
+</ul>

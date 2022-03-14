@@ -1,1 +1,2 @@
-<app-products></app-products>
+<app-products  (cartUpdated)="updateCart($event)"></app-products>
+<app-cart  [cart]="cart"  (subQuantity)="updateCartSubQuantity($event)"></app-cart>

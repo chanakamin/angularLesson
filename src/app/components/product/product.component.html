@@ -1,1 +1,6 @@
-<p>product works!</p>
+<div *ngIf="product">
+    <h3 [innerHTML]="product.name"></h3>
+    <h4 [innerHTML]="product.description"></h4>
+    <p [style.font-weight]="product.quantity < 10 ? 'bold' : 'regular'" > Price: {{ product.price }} | quantity: {{ product.quantity }}</p>
+    <button [disabled]="!product.quantity" (click)="addProductToCart()">Add to cart</button>
+</div>
