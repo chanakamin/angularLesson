@@ -21,6 +21,9 @@ Then you can create a new repository and start pushing changes.
 `git push origin master` - push your changes to git.  
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+This project is used for learning
+
+
 
 ## Development server
 
