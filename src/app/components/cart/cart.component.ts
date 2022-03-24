@@ -19,5 +19,4 @@ export class CartComponent implements OnInit {
   subQuantityOfProduct(c: { product: Product, quantity: number}) {
     this.subQuantity.emit(c);
   }
-
 }
