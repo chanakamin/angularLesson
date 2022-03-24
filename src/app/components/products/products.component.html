@@ -1,4 +1,5 @@
 <h1>Products in store: </h1>
+<button (click)="addNewProduct = true">Add Product</button>
 <ul>
     <!-- כל מאפיין שעטוף בסוגריים מורבעות, הערך שהוא מכיל הוא קוד ולא מחרוזת רגילה
         property binding
@@ -10,4 +11,5 @@
 <!-- (productAddedToCart) - רישום לארוע שיכול להתרחש בתוך הקומפננטה
     $event - שם שמור שתמיד מכיל את המידע של הארוע שנשלח מתוך הקומפוננטה הפנימית
 -->
+<app-new-product *ngIf="addNewProduct"></app-new-product>
 <app-product *ngIf="selectedProduct" [product]="selectedProduct"  (productAddedToCart)="addProductToCart($event)"></app-product>
