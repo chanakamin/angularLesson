@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { products } from '../../data/products';
 
@@ -21,7 +22,8 @@ export class NewProductComponent implements OnInit {
     };
   }
 
-  constructor() {
+  // ייבוא של ספריה לתוך קומפוננטה ע"י שימוש ב dependency injection
+  constructor(private router: Router) {
     this.initProduct();
    }
 
@@ -32,6 +34,8 @@ export class NewProductComponent implements OnInit {
     this.newProduct && (this.newProduct.code = products.length);
     products.push(this.newProduct as Product);
     this.initProduct();
+    // ניווט דרך הקוד
+    this.router.navigateByUrl('/products');
   }
 
 }

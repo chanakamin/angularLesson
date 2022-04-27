@@ -12,14 +12,6 @@ export class ProductsComponent implements OnInit {
   @Output() cartUpdated: EventEmitter<Product> = new EventEmitter<Product>();
 
   products: Product[] = products;
-  selectedProduct?: Product;
-
-  addNewProduct = false;
-
-  selectProduct(product: Product): void {
-    console.log('selectProduct', product);
-    this.selectedProduct = product;
-  }
 
   constructor() { }
 
