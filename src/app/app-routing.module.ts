@@ -1,32 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './components/cart/cart.component';
-import { HomeComponent } from './components/home/home.component';
-import { NewProductComponent } from './components/new-product/new-product.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ProductComponent } from './components/product/product.component';
-import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [{
+  path: 'sign-in',
+  loadChildren: () => import('./user-module/user-module.module').then(u => u.UserModuleModule),
+}, {
+  path: 'signin',
+  redirectTo: 'sign-in',
+  pathMatch: 'full',
+}, {
   path: '',
-  component: HomeComponent,
-},{
-  path: 'products',
-  component: ProductsComponent,
-  children: [{
-    path: 'new',
-    component: NewProductComponent,
-  }, {
-    path: ':id',
-    component: ProductComponent,
-  }]
-}, {
-  path: 'cart',
-  component: CartComponent,
-}, {
-  path: '**',
-  component: PageNotFoundComponent,
-}];
+  loadChildren: () => import('./main-module/main-module.module').then(m => m.MainModuleModule),
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
