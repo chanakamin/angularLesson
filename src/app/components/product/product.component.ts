@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { filter, map, switchMap } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
+import { ProductsService } from 'src/app/services/products.service';
 import { products } from '../../data/products';
 
 @Component({
@@ -19,13 +21,24 @@ export class ProductComponent implements OnInit {
   @Output() productAddedToCart: EventEmitter<Product> = new EventEmitter<Product>();
 
   // activatedRoute - סרוויס שמכיל הרבה מידע על הניווט הנוכחי שנמצאים בו
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private productsService: ProductsService) {
     // הפונקציה subscribe
     // מקבלת פונקציה שהיא מקבלת כפרמטר את הערך הנוכחי העדכני
-    this.activatedRoute.params.subscribe(params => {
-      console.log(params);
-      const id = parseInt(params['id']);
-      this.product = products.find(product => product.code === id);
+    this.activatedRoute.params
+    // pipe - פונקציה שמקבלת אופרטורים
+    .pipe(
+      map(params => parseInt(params['id'])),
+      filter(id => {
+        if (isNaN(id)) {
+          return false;
+        }
+        return true;
+      }),
+      switchMap(id =>  this.productsService.getProduct(id))
+    )
+    .subscribe(product => {
+      console.log(product);
+      this.product = product;
     })
    }
 

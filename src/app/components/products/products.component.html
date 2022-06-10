@@ -4,7 +4,7 @@
     <!-- כל מאפיין שעטוף בסוגריים מורבעות, הערך שהוא מכיל הוא קוד ולא מחרוזת רגילה
         property binding
     -->
-    <li *ngFor="let product of products" [id]="product.code"   > 
+    <li *ngFor="let product of products | async" [id]="product.code"   > 
         <a [routerLink]="'' + product.code" [innerHTML]="product.name"
         [class.low-quantity]="product.quantity < 10"  [class.high-quantity]="product.quantity > 30"></a>
     </li>

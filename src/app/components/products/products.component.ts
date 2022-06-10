@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { products } from 'src/app/data/products';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -11,9 +12,10 @@ export class ProductsComponent implements OnInit {
 
   @Output() cartUpdated: EventEmitter<Product> = new EventEmitter<Product>();
 
-  products: Product[] = products;
+  products: Observable<Product[]> = this.productsService.getProducts();
 
-  constructor() { }
+  constructor(private productsService: ProductsService) { 
+  }
 
   ngOnInit(): void {
   }
